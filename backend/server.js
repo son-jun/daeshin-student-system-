@@ -10,7 +10,7 @@ const assessmentsRouter = require("./routes/assessments");
 const gradesRouter      = require("./routes/grades");
 
 const app  = express();
-const PORT = process.env.PORT || 3306;  // Railway가 PORT를 자동으로 넣어줌
+const PORT = process.env.PORT || 3000;  // Railway가 PORT를 자동으로 넣어줌
 
 app.use(cors());
 app.use(express.json({ limit: "10mb" })); // 이미지 첨부 때문에 limit 필요
@@ -34,5 +34,3 @@ app.get("*", (req, res) => {
 app.listen(PORT, () => {
   console.log(`서버 실행 중: http://localhost:${PORT}`);
 });
-
-require('dotenv').config();
