@@ -5,7 +5,7 @@ const pool = mysql.createPool({
   host: process.env.DB_HOST || "caboose.proxy.rlwy.net",
   port: process.env.DB_PORT || 51993,
   user: process.env.DB_USER || "root",
-  password: process.env.DB_PASSWORD || "••••••••••••••••••••••••••••••••",
+  password: process.env.DB_PASSWORD || "OTteZblDPzCoPINSBqzLXjEkJvvBycde",
   database: process.env.DB_NAME || "daeshin_student_db",
   waitForConnections: true,
   connectionLimit: 10,
