@@ -10,7 +10,7 @@ const assessmentsRouter = require("./routes/assessments");
 const gradesRouter      = require("./routes/grades");
 
 const app  = express();
-const PORT = process.env.PORT || 51993;  // Railway가 PORT를 자동으로 넣어줌
+const PORT = process.env.PORT || 3000;  // Railway가 PORT를 자동으로 넣어줌
 
 app.use(cors());
 app.use(express.json({ limit: "10mb" })); // 이미지 첨부 때문에 limit 필요
