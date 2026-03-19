@@ -1,31 +1,25 @@
-// backend/config/db.js
-const mysql = require("mysql2/promise");
-
-const pool = mysql.createPool({
-  host: process.env.DB_HOST || "caboose.proxy.rlwy.net",
-  port: process.env.DB_PORT || 51993,
-  user: process.env.DB_USER || "root",
+const mysql = require("mysql2");
+ 
+const db = mysql.createPool({
+  host:     process.env.DB_HOST     || "caboose.proxy.rlwy.net",
+  port:     process.env.DB_PORT     || 51993,
+  user:     process.env.DB_USER     || "root",
   password: process.env.DB_PASSWORD || "OTteZblDPzCoPINSBqzLXjEkJvvBycde",
-  database: process.env.DB_NAME || "railway",
+  database: process.env.DB_NAME     || "railway",
   waitForConnections: true,
-  connectionLimit: 10,
-  charset: "utf8mb4",
+  connectionLimit:    10,
+  queueLimit:         0
 });
-
-// ✅ 연결 테스트 (서버 시작 시 1회 실행)
-(async () => {
-  try {
-    const conn = await pool.getConnection();
-    console.log("✅ MySQL 연결 성공");
-
-    // 🔥 진짜 연결 확인용 쿼리
-    const [rows] = await conn.query("SELECT 1 AS test");
-    console.log("쿼리 테스트:", rows);
-
-    conn.release();
-  } catch (err) {
-    console.error("❌ MySQL 연결 실패:", err.message);
+ 
+// 서버 시작 시 연결 확인
+db.getConnection((err, connection) => {
+  if (err) {
+    console.log("DB 연결 실패");
+    console.log(err);
+    return;
   }
-})();
-
-module.exports = pool;
+  console.log("MySQL 연결 성공");
+  connection.release();
+});
+ 
+module.exports = db;
