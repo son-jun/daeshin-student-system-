@@ -1,10 +1,10 @@
 const mysql = require("mysql2");
  
 const db = mysql.createPool({
-  host:     process.env.DB_HOST     || "caboose.proxy.rlwy.net",
-  port:     process.env.DB_PORT     || 51993,
+  host:     process.env.DB_HOST     || "autorack.proxy.rlwy.net",
+  port:     process.env.DB_PORT     || 47927,
   user:     process.env.DB_USER     || "root",
-  password: process.env.DB_PASSWORD || "OTteZblDPzCoPINSBqzLXjEkJvvBycde",
+  password: process.env.DB_PASSWORD || "wBqesuFhAKovjIoALWYDhtxJezPnnHFG",
   database: process.env.DB_NAME     || "railway",
   waitForConnections: true,
   connectionLimit:    10,
